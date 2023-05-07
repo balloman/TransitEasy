@@ -1,7 +1,7 @@
 {
     "name": "transit-easy",
     "displayName": "TransitEasy",
-    "version": "0.202212.1",
+    "version": "1.0.0",
     "description": "Chrome Extension that allows you to see transit directions for listings on StreetEasy",
     "license": "MIT",
     "scripts": {
@@ -13,31 +13,35 @@
     },
     "type": "module",
     "dependencies": {
-        "solid-js": "^1.7.5"
+        "@hope-ui/solid": "^0.6.7",
+        "@stitches/core": "^1.2.8",
+        "solid-js": "^1.7.5",
+        "solid-transition-group": "^0.2.2"
     },
     "devDependencies": {
-        "@crxjs/vite-plugin": "2.0.0-beta.7",
-        "@types/chrome": "0.0.203",
+        "@crxjs/vite-plugin": "2.0.0-beta.17",
+        "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+        "@types/chrome": "0.0.235",
         "@types/node": "20.1.0",
-        "@typescript-eslint/eslint-plugin": "5.45.0",
-        "@typescript-eslint/parser": "5.45.0",
+        "@typescript-eslint/eslint-plugin": "5.59.2",
+        "@typescript-eslint/parser": "5.59.2",
         "autoprefixer": "^10.4.14",
         "babel-preset-solid": "^1.7.4",
-        "eslint": "8.29.0",
+        "eslint": "8.40.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-import": "^2.27.5",
-        "eslint-plugin-jsx-a11y": "6.6.1",
+        "eslint-plugin-jsx-a11y": "6.7.1",
         "eslint-plugin-prettier": "4.2.1",
-        "eslint-plugin-solid": "^0.9.4",
+        "eslint-plugin-solid": "0.12.1",
         "eslint-plugin-tailwindcss": "^3.11.0",
-        "fs-extra": "11.1.0",
-        "nodemon": "2.0.20",
+        "fs-extra": "11.1.1",
+        "nodemon": "2.0.22",
         "postcss": "^8.4.23",
-        "prettier": "2.8.0",
+        "prettier": "2.8.8",
         "ts-loader": "9.4.2",
         "ts-node": "10.9.1",
-        "typescript": "4.9.3",
-        "vite": "3.2.4",
+        "typescript": "5.0.4",
+        "vite": "4.3.5",
         "vite-plugin-solid": "^2.7.0"
     }
 }
