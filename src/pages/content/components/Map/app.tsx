@@ -39,7 +39,8 @@ const App = () => {
   const source = () => {
     if (work()) {
       const parsed = work()?.replaceAll(" ", "+");
-      const parsedBuilding = building()?.replaceAll(" ", "+");
+      // Gets the address by getting the string starting with the first numeric character
+      const parsedBuilding = building()?.match(/\d.*/)?.[0].replaceAll(" ", "+");
       return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&mode=transit&origin=${parsedBuilding}&destination=${parsed}`;
     }
     return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&origin=One+World+Tradedestination=Empire+State+Building`;
