@@ -8,7 +8,7 @@
     "eslint:recommended",
     "plugin:solid/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:tailwindCSS/recommended",
+    "plugin:tailwindCSS/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
