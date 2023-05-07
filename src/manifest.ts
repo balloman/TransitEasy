@@ -22,7 +22,7 @@ const manifest = defineManifest(async () => ({
   },
   content_scripts: [
     {
-      matches: ["http://*/*", "https://*/*", "<all_urls>"],
+      matches: ["https://streeteasy.com/*"],
       js: ["src/pages/content/index.tsx"],
     },
   ],
