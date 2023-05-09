@@ -18,3 +18,4 @@ public/manifest.json
 dist.pem
 dist.crx
 dist.zip
+**/*.zip
