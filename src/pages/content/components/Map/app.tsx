@@ -23,8 +23,10 @@ function waitForElm(selector) {
 
 const App = () => {
   const [work, setWork] = createSignal<string | undefined>(undefined);
-  const [building, setBuilding] = createSignal<string>("One World Trade Center");
-  waitForElm(".BuildingInfo-item").then((elm) => {
+  const [building, setBuilding] = createSignal<string>(
+    "One World Trade Center"
+  );
+  waitForElm(".building-title").then((elm) => {
     setBuilding(elm["innerText"]);
   });
 
@@ -36,12 +38,13 @@ const App = () => {
       setWork(changes.address.newValue);
     }
   });
+
   const source = () => {
     if (work()) {
       const parsed = work()?.replaceAll(" ", "+");
       // Gets the address by getting the string starting with the first numeric character
-      const parsedBuilding = building()?.match(/\d.*/)?.[0].replaceAll(" ", "+");
-      return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&mode=transit&origin=${parsedBuilding}&destination=${parsed}`;
+      const parsedBuilding = building().trim().replaceAll(" ", "+");
+      return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&mode=transit&destination=${parsed}&origin=${parsedBuilding}`;
     }
     return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&origin=One+World+Tradedestination=Empire+State+Building`;
   };

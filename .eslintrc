@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:solid/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:tailwindCSS/recommended"
+    "plugin:tailwindCSS/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,10 +21,12 @@
   },
   "plugins": [
     "solid",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
-    "semi": ["error"]
+    "semi": ["error"],
+    "prettier/prettier": "warn"
   },
   "globals": {
     "chrome": "readonly"
