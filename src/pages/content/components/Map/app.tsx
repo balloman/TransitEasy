@@ -40,7 +40,7 @@ const App = () => {
     if (!coordinates) {
       return;
     }
-    const latlng = coordinates.trim().split(",");
+    const latlng = coordinates.trim().split(";");
     const lat = parseFloat(latlng[0]);
     const lng = parseFloat(latlng[1]);
     setBuilding({ lat, lng });
