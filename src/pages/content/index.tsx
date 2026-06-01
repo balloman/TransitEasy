@@ -3,12 +3,12 @@ import App from "./components/Map/app";
 
 function findSectionByText(text: string) {
   const sections = document.querySelectorAll('section');
-  return Array.from(sections).find(section => 
+  return Array.from(sections).find(section =>
     section.textContent.includes(text)
   );
 }
 
-console.log("LOADING EXTENSION")
+console.log("LOADING TRANSITEASY EXTENSION")
 const newText = document.createElement("div");
 newText.className = "full";
 const relevantSection = findSectionByText("About the building");
