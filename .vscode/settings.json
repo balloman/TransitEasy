@@ -13,4 +13,5 @@
   "typescript.preferences.quoteStyle": "single",
   "prettier.singleQuote": true,
   "debug.internalConsoleOptions": "neverOpen",
+  "typescript.tsdk": "node_modules/typescript/lib",
 }

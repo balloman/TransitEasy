@@ -1,4 +1,3 @@
-import "@src/styles/index.css";
 import { Show, createSignal } from "solid-js";
 
 /**
@@ -9,7 +8,7 @@ interface LatLng {
   lng: number;
 }
 
-function waitForElm(selector) {
+function waitForElm(selector: string): Promise<HTMLMetaElement | null> {
   return new Promise((resolve) => {
     if (document.querySelector(selector)) {
       return resolve(document.querySelector(selector));
@@ -30,14 +29,23 @@ function waitForElm(selector) {
 }
 
 const App = () => {
-  const [work, setWork] = createSignal<string | undefined>(undefined);
+  const [work, { refetch }] = createResource(workAddress.getValue);
+  const unwatch = workAddress.watch(() => {
+    refetch();
+  })
   const [building, setBuilding] = createSignal<LatLng>({
     lat: 40.7127,
     lng: -74.0134,
   });
+
+  onCleanup(() => {
+    unwatch();
+  })
+
   waitForElm("meta[name='ICBM'").then((elm) => {
-    const coordinates: string | undefined = elm["content"];
+    const coordinates = elm?.content
     if (!coordinates) {
+      console.log("The TransitEasy extension couldn't find the location of this building...")
       return;
     }
     const latlng = coordinates.trim().split(";");
@@ -46,18 +54,9 @@ const App = () => {
     setBuilding({ lat, lng });
   });
 
-  chrome.storage.local.get("address", (result) => {
-    setWork(result.address);
-  });
-  chrome.storage.local.onChanged.addListener((changes) => {
-    if (changes.address) {
-      setWork(changes.address.newValue);
-    }
-  });
-
   const source = () => {
     if (work()) {
-      const parsed = work()?.replaceAll(" ", "+");
+      const parsed = encodeURIComponent(work()!);
       // Gets the address by getting the string starting with the first numeric character
       const parsedBuilding = building().lat + "," + building().lng;
       return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&mode=transit&destination=${parsed}&origin=${parsedBuilding}`;
