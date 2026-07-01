@@ -1,17 +1,9 @@
 {
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-  ],
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll.eslint": "explicit"
-  },
-  "javascript.preferences.quoteStyle": "single",
-  "typescript.preferences.quoteStyle": "single",
-  "prettier.singleQuote": true,
-  "debug.internalConsoleOptions": "neverOpen",
-  "typescript.tsdk": "node_modules/typescript/lib",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit",
+		"source.fixAll.oxlint": "explicit"
+	},
+	"editor.defaultFormatter": "oxc.oxc-vscode",
+	"debug.internalConsoleOptions": "neverOpen",
+	"typescript.tsdk": "node_modules/typescript/lib"
 }
