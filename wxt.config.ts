@@ -9,6 +9,9 @@ export default defineConfig({
 		name: packageJson.displayName,
 		description: packageJson.description,
 		permissions: ["storage"],
+		icons: {
+			128: "/icons/transit.png",
+		},
 	},
 	srcDir: "src",
 	vite: () => ({
