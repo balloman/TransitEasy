@@ -1,6 +1,12 @@
 # TransitEasy
 
-This repository contains a chrome extension that lets you see the transit times for streeteasy properties
+TransitEasy is a Chrome extension that shows transit directions for StreetEasy listings.
+
+## Features
+
+- Save a work address in extension storage
+- Inject a Google Maps transit iframe into StreetEasy listing pages
+- Rebuild automatically during development with WXT
 
 ## Development
 
@@ -9,9 +15,19 @@ This repository contains a chrome extension that lets you see the transit times 
 2. Start the watch build:
    `pnpm dev`
 3. In Chrome, open `chrome://extensions`, enable Developer mode, and click Load unpacked.
-4. Select the `dist` folder in this repository.
+4. Select the `.output` folder in this repository.
 
 The extension will rebuild automatically while `pnpm dev` is running. Use `pnpm build` for a one-off production build.
+
+Available scripts:
+
+- `pnpm dev` - start the WXT dev server
+- `pnpm build` - create a production build
+- `pnpm zip` - package the extension
+- `pnpm lint` - run oxlint
+- `pnpm lint:fix` - fix lint issues
+- `pnpm format` - format the code
+- `pnpm format:check` - check formatting
 
 ## Demo
 
@@ -20,9 +36,10 @@ The extension will rebuild automatically while `pnpm dev` is running. Use `pnpm 
 2. Scroll down on StreetEasy
    ![iframe that shows how it works](https://i.imgur.com/C0Ns7yf.png)
 
-# Stack
+## Stack
 
 - SolidJS
-- Vite
-- HopeUI
-- Google MapsEmbed API
+- WXT
+- Tailwind CSS
+- daisyUI
+- Google Maps Embed API
