@@ -1,5 +1,3 @@
-import { Show, createSignal } from "solid-js";
-
 /**
  * Represents a latitude and longitude coordinate pair.
  */
@@ -8,18 +6,29 @@ interface LatLng {
 	lng: number;
 }
 
+const googleMapsApiKey = import.meta.env.WXT_GOOGLE_MAPS_API_KEY;
+
+if (!googleMapsApiKey) {
+	throw new Error("Missing WXT_GOOGLE_MAPS_API_KEY");
+}
+
 function waitForElm(selector: string): Promise<HTMLMetaElement | null> {
 	return new Promise((resolve) => {
-		if (document.querySelector(selector)) {
-			return resolve(document.querySelector(selector));
+		const existing = document.querySelector<HTMLMetaElement>(selector);
+		if (existing) {
+			return resolve(existing);
 		}
 
 		const observer = new MutationObserver(() => {
-			if (document.querySelector(selector)) {
-				resolve(document.querySelector(selector));
+			const match = document.querySelector<HTMLMetaElement>(selector);
+			if (match) {
 				observer.disconnect();
+				resolve(match);
 			}
 		});
+
+		const cleanup = () => observer.disconnect();
+		onCleanup(cleanup);
 
 		observer.observe(document.body, {
 			childList: true,
@@ -42,7 +51,7 @@ const App = () => {
 		unwatch();
 	});
 
-	waitForElm("meta[name='ICBM'").then((elm) => {
+	waitForElm("meta[name='ICBM']").then((elm) => {
 		const coordinates = elm?.content;
 		if (!coordinates) {
 			console.log("The TransitEasy extension couldn't find the location of this building...");
@@ -59,9 +68,9 @@ const App = () => {
 			const parsed = encodeURIComponent(work()!);
 			// Gets the address by getting the string starting with the first numeric character
 			const parsedBuilding = building().lat + "," + building().lng;
-			return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&mode=transit&destination=${parsed}&origin=${parsedBuilding}`;
+			return `https://www.google.com/maps/embed/v1/directions?key=${googleMapsApiKey}&mode=transit&destination=${parsed}&origin=${parsedBuilding}`;
 		}
-		return `https://www.google.com/maps/embed/v1/directions?key=AIzaSyDWXj-Q9-WqQaKqyA48Daz-rYHa8rkDjsk&origin=One+World+Tradedestination=Empire+State+Building`;
+		return `https://www.google.com/maps/embed/v1/directions?key=${googleMapsApiKey}&origin=One+World+Tradedestination=Empire+State+Building`;
 	};
 
 	return (

@@ -12,7 +12,9 @@
 
 # etc
 .DS_Store
+.env
 .env.local
+.env.*.local
 .idea
 
 #generated manifest

@@ -12,10 +12,13 @@ TransitEasy is a Chrome extension that shows transit directions for StreetEasy l
 
 1. Install dependencies:
    `pnpm install`
-2. Start the watch build:
+2. Create your local environment file:
+   `cp .env.example .env`
+3. Set `WXT_GOOGLE_MAPS_API_KEY` in `.env` to a Google Maps Embed API key.
+4. Start the watch build:
    `pnpm dev`
-3. In Chrome, open `chrome://extensions`, enable Developer mode, and click Load unpacked.
-4. Select the `.output` folder in this repository.
+5. In Chrome, open `chrome://extensions`, enable Developer mode, and click Load unpacked.
+6. Select the `.output` folder in this repository.
 
 The extension will rebuild automatically while `pnpm dev` is running. Use `pnpm build` for a one-off production build.
 
