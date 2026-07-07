@@ -1,0 +1,13 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "jsx-a11y"],
+	"globals": {
+		"chrome": "readonly"
+	},
+	"ignorePatterns": ["watch.js", "dist/**", "**/*.css"]
+}
