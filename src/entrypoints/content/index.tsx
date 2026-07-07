@@ -50,9 +50,18 @@ export default defineContentScript({
 			subtree: true,
 		});
 
-		requestIdleCallback(mount);
+		const cancelInitialMount = (() => {
+			if (typeof window.requestIdleCallback === "function") {
+				const handle = window.requestIdleCallback(mount);
+				return () => window.cancelIdleCallback(handle);
+			}
+
+			const handle = window.setTimeout(mount, 0);
+			return () => window.clearTimeout(handle);
+		})();
 
 		ctx.onInvalidated(() => {
+			cancelInitialMount();
 			observer.disconnect();
 			cleanup();
 		});
