@@ -10,6 +10,7 @@
 		"dev": "wxt",
 		"build": "wxt build",
 		"build:safari": "wxt build -b safari",
+		"setup:safari": "xcrun safari-web-extension-packager .output/safari-mv2 --project-location .output --bundle-identifier com.balloman.TransitEasy",
 		"zip": "wxt zip",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",

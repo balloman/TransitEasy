@@ -8,6 +8,7 @@ export default defineConfig({
 	manifest: {
 		name: packageJson.displayName,
 		description: packageJson.description,
+		version: packageJson.version,
 		permissions: ["storage"],
 		icons: {
 			128: "/icons/transit.png",
