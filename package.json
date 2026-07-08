@@ -1,7 +1,7 @@
 {
 	"name": "transit-easy",
 	"displayName": "TransitEasy",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"private": "true",
 	"description": "Chrome Extension that allows you to see transit directions for listings on StreetEasy",
 	"license": "MIT",
@@ -9,6 +9,7 @@
 	"scripts": {
 		"dev": "wxt",
 		"build": "wxt build",
+		"build:safari": "wxt build -b safari",
 		"zip": "wxt zip",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
